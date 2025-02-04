@@ -1,5 +1,5 @@
-import 'package:ag3_firebase/PaginaPrincipal.dart';
 import 'package:ag3_firebase/google_signin.dart';
+import 'package:ag3_firebase/libros_firebase.dart';
 import 'package:flutter/material.dart';
 
 class Paginalogin extends StatelessWidget {
@@ -19,10 +19,8 @@ class Paginalogin extends StatelessWidget {
           width: 300,
           child: OutlinedButton(
               onPressed: () {
-                iniciarConGoogle().whenComplete(() => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Paginaprincipal())));
+                iniciarConGoogle().whenComplete(() => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LibrosFirebase())));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

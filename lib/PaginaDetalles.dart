@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:ag3_firebase/libro.dart';
 import 'package:flutter/material.dart';
 
 class Paginadetalles extends StatefulWidget {
-  final Libro libro;
+  final Map libro;
   const Paginadetalles({super.key, required this.libro});
 
   @override
@@ -14,11 +13,11 @@ class Paginadetalles extends StatefulWidget {
 class _PaginadetallesState extends State<Paginadetalles> {
   @override
   Widget build(BuildContext context) {
-    Libro libro = widget.libro;
+    Map libro = widget.libro;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
-        title: Text(libro.titulo),
+        title: Text(libro["titulo"]),
         centerTitle: true,
       ),
       body: Center(
@@ -30,21 +29,21 @@ class _PaginadetallesState extends State<Paginadetalles> {
               Container(
                   height: 400,
                   width: 300,
-                  child: Image.memory(base64Decode(libro.portada!))),
+                  child: Image.memory(base64Decode(libro["imagen"]!))),
               Padding(padding: EdgeInsets.symmetric(vertical: 15)),
-              Text(libro.titulo,
+              Text(libro["titulo"],
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-              Text(libro.autor,
+              Text(libro["autor"],
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-              Text(libro.paginas.toString() + " paginas",
+              Text(libro["paginas"] + " paginas",
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-              Text(libro.editorial,
+              Text(libro["editorial"],
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
-              Text(libro.genero,
+              Text(libro["genero"],
                   style:
                       TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0)),
             ],

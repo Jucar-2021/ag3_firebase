@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ag3_firebase/PaginaPrincipal.dart';
-import 'package:ag3_firebase/libro.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,6 +13,7 @@ class Paginaregistro extends StatefulWidget {
 }
 
 class _PaginaregistroState extends State<Paginaregistro> {
+  DatabaseReference db = FirebaseDatabase.instance.ref().child("libro");
   File? imagen;
   String? imagenblob;
   var formKey = new GlobalKey<FormState>();
@@ -128,36 +128,18 @@ class _PaginaregistroState extends State<Paginaregistro> {
                           if (!formKey.currentState!.validate()) {
                             return;
                           }
-                          Libro libro = new Libro(
-                              null,
-                              ctrlTitulo.text,
-                              ctrlAutor.text,
-                              ctrlGenero.text,
-                              int.parse(ctrlPaginas.text),
-                              ctrlEditorial.text,
-                              imagenblob!);
-                          //        Libro? libroGuardado = await db.guardarLibro(libro);
-                          if (null != null) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Paginaprincipal()));
-                            return showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    insetPadding:
-                                        EdgeInsets.fromLTRB(5, 370, 5, 370),
-                                    content: Center(
-                                      child: Text(
-                                        "Guardado",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  );
-                                });
-                          }
+                          Map<String, String> libro = {
+                            "titulo": ctrlTitulo.text,
+                            "autor": ctrlAutor.text,
+                            "genero": ctrlGenero.text,
+                            "paginas": ctrlPaginas.text,
+                            "editorial": ctrlEditorial.text,
+                            "imagen": imagenblob.toString()
+                          };
+                          db.push().set(libro).whenComplete(() {
+                            Navigator.pop(context);
+                            setState(() {});
+                          });
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
