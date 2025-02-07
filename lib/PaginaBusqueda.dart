@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ag3_firebase/PaginaDetalles.dart';
+import 'PaginaDetalles.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 

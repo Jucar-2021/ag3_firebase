@@ -1,8 +1,7 @@
 import 'dart:convert';
-
-import 'package:ag3_firebase/PaginaBusqueda.dart';
-import 'package:ag3_firebase/PaginaDetalles.dart';
-import 'package:ag3_firebase/PaginaRegistro.dart';
+import 'PaginaBusqueda.dart';
+import 'PaginaDetalles.dart';
+import 'PaginaRegistro.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';

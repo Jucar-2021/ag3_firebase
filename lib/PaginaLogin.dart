@@ -1,5 +1,5 @@
-import 'package:ag3_firebase/google_signin.dart';
-import 'package:ag3_firebase/libros_firebase.dart';
+import 'google_signin.dart';
+import 'libros_firebase.dart';
 import 'package:flutter/material.dart';
 
 class Paginalogin extends StatelessWidget {
