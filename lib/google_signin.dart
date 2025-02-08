@@ -10,6 +10,8 @@ Future<String> iniciarConGoogle() async {
       idToken: tokenUsuario.idToken, accessToken: tokenUsuario.accessToken);
   User? usuario =
       (await FirebaseAuth.instance.signInWithCredential(credencial)).user;
+  print(
+      "<<<<<<<<<<<$usuario , , , , $credencial,,,,,,,,,,,,,,,,,,,,$tokenUsuario");
   return "Hola " + usuario.toString();
 }
 
